@@ -36,6 +36,7 @@ while (!won) { // Will loop over block until condition isn't true
 console.log(`Found ${wordInfo.word} in ${history.count} turns`);
 
 // YOU MAY ADD YOUR OWN FUNCTIONS (ONLY FUNCTIONS) BELOW THIS
+
 function common(word,guess){
   let count = 0;
   const wordLetter = {};
@@ -79,6 +80,7 @@ function invert(guess){
   }
   return res;
 }
+
 // YOU MAY ADD YOUR OWN FUNCTIONS (ONLY FUNCTIONS) ABOVE THIS
 
 function thinkAbout( wordInfo ) {
@@ -87,8 +89,10 @@ function thinkAbout( wordInfo ) {
   // return anything you want, even nothing
 
   // EDIT BELOW THIS
+
   let res =[0,wordInfo.allWords.length-1,invert(wordInfo.word)];
   return res;
+
   // EDIT ABOVE THIS
 }
 
@@ -98,6 +102,7 @@ function pickGuess( wordInfo, history ) {
   // along with any startup info that was stored in history.info
 
   // EDIT BELOW THIS
+
   let start = wordInfo.magic[0];
   let end = wordInfo.magic[1];
   if(history.count!==1){
@@ -112,7 +117,6 @@ function pickGuess( wordInfo, history ) {
     }
   }
   return wordInfo.allWords[Math.floor((end+start)/2)];
-
   // EDIT ABOVE THIS
 }
 
@@ -122,6 +126,7 @@ function compareLetters( guess, wordInfo ) {
   // You may add info in result beyond what is needed if you wish
 
   // EDIT BELOW THIS
+
   result.similar = common(wordInfo.word,guess);
   if(correct(wordInfo.word,guess) === wordInfo.word.length){
     result.won = true;
