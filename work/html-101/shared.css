@@ -1,0 +1,34 @@
+
+.first-part{
+    background-color: seagreen;
+}
+
+body{
+   background-color: aqua;
+    margin: 0px;
+}
+
+
+.header-menu{
+    display: inline-block;
+    vertical-align: top;
+}
+.header-menu > li{
+    display: inline-block;
+}
+
+.header-menu > li:hover .secondary-menu{
+    display: inline-block;
+}
+
+.secondary-menu{
+    display: none;
+    list-style: none;
+    padding: 0;
+}
+
+.menu-title{
+    font-weight: bold;
+    font-size: 30px;
+    vertical-align: center;
+}

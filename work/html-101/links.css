@@ -1,0 +1,13 @@
+
+.link-items > li {
+    display: inline-block;
+    margin: 10px;
+}
+.link-items{
+    display: inline-block;
+    list-style: none;
+    vertical-align: top;
+}
+.content{
+    text-align: center;
+}

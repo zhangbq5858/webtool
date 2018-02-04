@@ -35,17 +35,6 @@ function correct(word,guess){
     return count;
 }
 
-function invert(guess){
-    let g = guess.toLowerCase()
-    let res  = 0;
-    for(let i=0;i<g.length;i++){
-       res *= 26;
-       res += g.charCodeAt(i)-97;
-    }
-    return res;
-  }
-console.log("?????%d",invert(word))
-
 for(let i=0;i<guesses.length;i++){
     console.log("%s %s %d %d",word,guesses[i],correct(word,guesses[i]),common(word,guesses[i]))
 }
