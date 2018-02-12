@@ -37,6 +37,49 @@ console.log(`Found ${wordInfo.word} in ${history.count} turns`);
 
 // YOU MAY ADD YOUR OWN FUNCTIONS (ONLY FUNCTIONS) BELOW THIS
 
+function common(word,guess){
+  let count = 0;
+  const wordLetter = {};
+  for(let firstLetter of word){
+      if(!wordLetter[firstLetter]){
+          wordLetter[firstLetter] = 0;
+      }
+      wordLetter[firstLetter]+=1;
+  }
+  for(let secondLetter of guess){
+      if(wordLetter[secondLetter]){
+          count++;
+          wordLetter[secondLetter]--;
+          if(wordLetter[secondLetter]===0){
+              delete wordLetter[secondLetter];
+          }
+      }
+  }
+  return count;
+}
+
+function correct(word,guess){
+  let count = 0;
+  for(let i=0;i<word.length;i++){
+      if(i>=guess.length){
+          break;
+      }
+      if(word.charAt(i)===guess.charAt(i)){
+          count++;
+      }
+  }
+  return count;
+}
+
+function invert(guess){
+  guess = guess.toLowerCase()
+  let res  = 0;
+  for(let i=0;i<guess.length;i++){
+     res *= 26;
+     res += guess.charCodeAt(i)-97;
+  }
+  return res;
+}
 // YOU MAY ADD YOUR OWN FUNCTIONS (ONLY FUNCTIONS) ABOVE THIS
 
 function thinkAbout( wordInfo ) {
@@ -45,6 +88,9 @@ function thinkAbout( wordInfo ) {
   // return anything you want, even nothing
 
   // EDIT BELOW THIS
+
+  let res =[0,wordInfo.allWords.length-1,invert(wordInfo.word)];
+  return res;
 
   // EDIT ABOVE THIS
 }
@@ -56,6 +102,21 @@ function pickGuess( wordInfo, history ) {
 
   // EDIT BELOW THIS
 
+  let start = wordInfo.magic[0];
+  let end = wordInfo.magic[1];
+  if(history.count!==1){
+    let tmp = invert(history.results[history.results.length-1].word);
+    if(tmp>wordInfo.magic[2]){
+      end = Math.floor((end+start)/2)-1;
+      wordInfo.magic[1] = end;
+    }
+    else{
+      start = Math.floor((end+start)/2)+1;
+      wordInfo.magic[0] = start;
+    }
+  }
+  return wordInfo.allWords[Math.floor((end+start)/2)];
+
   // EDIT ABOVE THIS
 }
 
@@ -65,7 +126,13 @@ function compareLetters( guess, wordInfo ) {
   // You may add info in result beyond what is needed if you wish
 
   // EDIT BELOW THIS
-
+  result.similar = common(wordInfo.word,guess);
+  if(correct(wordInfo.word,guess) === wordInfo.word.length){
+    result.won = true;
+  }else{
+    result.won = false;
+  }
+  return result;
   // EDIT ABOVE THIS
 }
 
