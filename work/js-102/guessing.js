@@ -80,7 +80,6 @@ function invert(guess){
   }
   return res;
 }
-
 // YOU MAY ADD YOUR OWN FUNCTIONS (ONLY FUNCTIONS) ABOVE THIS
 
 function thinkAbout( wordInfo ) {
@@ -117,6 +116,7 @@ function pickGuess( wordInfo, history ) {
     }
   }
   return wordInfo.allWords[Math.floor((end+start)/2)];
+
   // EDIT ABOVE THIS
 }
 
@@ -126,14 +126,12 @@ function compareLetters( guess, wordInfo ) {
   // You may add info in result beyond what is needed if you wish
 
   // EDIT BELOW THIS
-
   result.similar = common(wordInfo.word,guess);
   if(correct(wordInfo.word,guess) === wordInfo.word.length){
     result.won = true;
   }else{
     result.won = false;
   }
-  result.word = guess;
   return result;
   // EDIT ABOVE THIS
 }
