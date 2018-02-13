@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="part02.css"/>
+    </head>
+    <body>
+        <div class="input">
+            <input class='new-task' maxlength="5">
+            <button class='guess' disabled="disabled">Guess</button>
+            <input class="computer-input" maxlength="5">
+            <span>Comp Guess</span>
+        </div>
+        <div class="output">
+            <ul class='player-results'>
+                <p class="playerbegin">No guesses made</p>
+                <ul class='player-result'>
+                    <li class='word'></li>
+                    <li class='common-number'></li>
+                    <li class='round'></li>
+                </ul>
+            </ul>
+            <ul class='computer-results'>
+                <p class="combegin">No guesses made</p>
+                <ul class='com-result'>
+                    <li class='word'></li>
+                    <li class='common-number'></li>
+                    <li class='round'></li>
+                </ul>
+            </ul>
+        </div>
+        <div class="status"></div>
+        <script src="part02.js"></script>
+    </body>
+</html>
+
