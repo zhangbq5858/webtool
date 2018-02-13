@@ -142,13 +142,13 @@
 
 
 
-    var playerResults = [];
-    var computerResults = [];
-    var playerTargetWord = "";
-    var computerTargetWord = "";
-    var round = 1;
-    var buttonState = ''; // begin/guess/reset
-    var computerGuesses = [];
+    let playerResults = [];
+    let computerResults = [];
+    let playerTargetWord = "";
+    let computerTargetWord = "";
+    let round = 1;
+    let buttonState = ''; // begin/guess/reset
+    let computerGuesses = [];
 
     function init(){
         round = 1;
@@ -164,7 +164,7 @@
     }
 
     function addKeyDown(){
-        var newTask = document.querySelector(".new-task").value; 
+       let newTask = document.querySelector(".new-task").value; 
         if(buttonState === "Reset"){
             if(event.keyCode === 13){
                 document.querySelector(".guess").click(); 
@@ -211,7 +211,7 @@
             if(commonCount === 5 && correct(value, targetWord)){
                 break;
             }
-            for(var x = 0; x < guessPool.length; x++){
+            for(let x = 0; x < guessPool.length; x++){
                 let tmp = common(guessPool[x], value);
                 if(tmp !== commonCount){
                     guessPool.splice(x,1);
@@ -222,7 +222,7 @@
     }
 
     function computerTurn(){
-        var result = [];
+        let result = [];
         result.push(computerGuesses[round - 1]);
         result.push(common(computerGuesses[round - 1], computerTargetWord));
         result.push(round);
@@ -237,15 +237,15 @@
     }
 
     function addGuess(){
-        var playerGuess = document.querySelector(".new-task").value.toUpperCase();
+        let playerGuess = document.querySelector(".new-task").value.toUpperCase();
         document.querySelector(".new-task").value = "";
-        var commonCount = common(playerGuess,playerTargetWord);
-        var result = [];
+        let commonCount = common(playerGuess,playerTargetWord);
+        let result = [];
         result.push(playerGuess);
         result.push(commonCount);
         result.push(round);
         playerResults.push(result);
-        render();
+        render();fkeydown
         if(commonCount === 5 && correct(playerGuess, playerTargetWord)){
             document.querySelector(".status").innerHTML = "Human wins in " + round.toString() + " turns";
             prepareEnd();
@@ -272,7 +272,7 @@
     }
     
     function addInput(){
-        var input = document.querySelector(".new-task").value.toUpperCase();
+        let input = document.querySelector(".new-task").value.toUpperCase();
         if(buttonState === "Begin"){
             if(input.length !== 5){
                 document.querySelector(".status").innerHTML = 'Enter a common 5 letter word for them to guess';
@@ -347,8 +347,8 @@
     }
 
     function generateList(results){
-        var lists = [];
-        for(var i = 0; i < results.length; i++){
+        let lists = [];
+        for(let i = 0; i < results.length; i++){
             const list = `<li class='result'><li class='word'>${results[i][0]}</li> <li class="common-number">${results[i][1]}</li> <li class='round'>${results[i][2]}</li></li>`;
             lists.push(list);
         }
@@ -389,7 +389,7 @@
     }
 
     function pickWord(){
-        var word = wordlist[ Math.floor( Math.random() * wordlist.length ) ];
+        let word = wordlist[ Math.floor( Math.random() * wordlist.length ) ];
         console.log(word);
         return word;
     }

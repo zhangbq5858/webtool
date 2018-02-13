@@ -142,18 +142,18 @@
 
 
 
-    var results = [["History", "Common", "Round"]];
-    var targetWord = pickWord(wordlist);
-    var round = 0;
-    var state = 'guess';
+    let results = [["History", "Common", "Round"]];
+    let targetWord = pickWord(wordlist);
+    let round = 0;
+    let state = 'guess';
 
     function render(){
         document.querySelector('.output ul').innerHTML = generateList();
     }
 
     function generateList(){
-        var lists = [];
-        for(var i = 0; i < results.length; i++){
+        let lists = [];
+        for(let i = 0; i < results.length; i++){
             const list = `<li class='result'><li class='word'>${results[i][0]}</li> <li class="common-number">${results[i][1]}</li> <li class='round'>${results[i][2]}</li></li>`;
             lists.push(list);
         }
@@ -166,8 +166,8 @@
     }
 
     function addOutput(){
-        var result = [];
-        var guessWord = document.querySelector('.new-task').value;
+        let result = [];
+        let guessWord = document.querySelector('.new-task').value;
         result.push(guessWord);
         result.push(common(guessWord,targetWord));
         result.push(++round);
@@ -196,7 +196,7 @@
     }
 
     function changeButtonAndHint(event){
-        var newTask = document.querySelector('.new-task').value;
+        let newTask = document.querySelector('.new-task').value;
         if(state === "guess"){
             if(newTask.length === 0){
                 document.querySelector('.hint').innerHTML = "";
@@ -207,8 +207,8 @@
                 document.querySelector('.guess').disabled = true;
                 return;
             }else{
-                for(var i = 0; i < 5; i++){
-                    var code = newTask.charCodeAt(i);
+                for(let i = 0; i < 5; i++){
+                    let code = newTask.charCodeAt(i);
                     if((65 <= code && code <= 90) || (97 <= code && code <= 122)){
                         continue;
                     }
@@ -233,7 +233,7 @@
 
     function changeEnter(){
         if(state == "guess"){
-            var input = document.querySelector(".new-task").value;
+            let input = document.querySelector(".new-task").value;
             if(event.keyCode === 13 && input.length === 5){
                 document.querySelector(".guess").click();
                 return;
@@ -285,7 +285,7 @@
     }
 
     function pickWord(list){
-        var word = list[ Math.floor( Math.random() * list.length ) ];
+        let word = list[ Math.floor( Math.random() * list.length ) ];
         console.log(word);
         return word;
     }
