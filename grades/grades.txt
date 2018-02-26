@@ -1,0 +1,52 @@
+student: Boqun Zhang
+repo: work-zhangbq5858
+
+task: work/js-101
+code-runs: A
+code-works: A
+follows-directions: A
+pr-correct: A
+html-practices:
+css-practices:
+js-practices: A, -1
+task-grade: A-
+
+task: work/js-102
+code-runs: A
+code-works: A
+follows-directions: A
+pre-correct: A
+html-practice:
+css-practice:
+js-practice: A, -1
+task-grade: A-
+
+task: work/js-102-extra
+code-runs: A
+code-works: A
+follows-directions: A
+pre-correct: A
+html-practice:
+css-practice:
+js-practice: A
+task-grade: A
+
+task: exams/exam01/part01
+code-runs: A
+code-works: A
+follows-directions: A
+pre-correct: A, -1
+html-practice: A
+css-practice: A, -1
+js-practice: A
+task-grade: B+
+
+task: exams/exam01/part02
+code-runs: A, -1
+code-works: A
+follows-directions: A
+pre-correct: A
+html-practice: A
+css-practice: A
+js-practice: A
+task-grade: A-
