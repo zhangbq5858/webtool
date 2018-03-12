@@ -12,6 +12,7 @@ import { askForResult,askForWordPool,generateTargetWord,resetGame } from './serv
 class Game extends Component{
     constructor(props){
         super(props);
+
         this.state = {
             mode: 'guess', //'guess' or 'reset'
             history: [],

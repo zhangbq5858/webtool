@@ -6,27 +6,33 @@ const PORT = 4000;
 const wordPool = require('./wordPool');
 const compare = require('./compare');
 
+app.use( express.static('public') ); // serve any assets by their path under 'public' directory
+app.use( bodyParser.json({ extended: true, type: '*/*' }) );
+
 let targetWords = {};
 let id = 0;
 
-app.post('/generate',(req, resp) => {
+app.get('/generate',(req, resp) => {
     id++;
     const targetWord = wordPool.selectWord();
     targetWords[id] = targetWord;
-    resp.send(JSON.stringify(id));
+    resp.send(JSON.stringify({userId : id}));
 });
 
 
 app.post('/guess',(req, resp) => {
-    const userId = req.body.id;
-    const guessWord = req.body.word;
-    const targetWord = targetWords[userid];
+    const userId = req.body.userId;
+    const guessWord = req.body.guessWord;
+    const targetWord = targetWords[userId];
     if(typeof(targetWord) === "undefined"){
-        resp.status(400).send("No current userId").end();
+        resp.statusMessage = " Invalid userId ";
+        resp.status(400).end();
     }else if(typeof(guessWord) === "undefined" || guessWord.length != targetWord.length){
-        resp.status(400).send("Invalid length of guessWord").end();
+        resp.statusMessage = " Invalid length of guessWord";
+        resp.status(400).end();
     }else if(! wordPool.validWord(guessWord.toUpperCase())){
-        resp.status(400).send("No such word in wordPool").end();
+        resp.statusMessage = " No such word in wordPool";
+        resp.status(400).end();
     }else{
         console.log(guessWord,targetWord);
         const common = compare.common(guessWord.toUpperCase(), targetWord);
@@ -39,8 +45,14 @@ app.post('/guess',(req, resp) => {
 });
 
 
-app.post('/wordPool',(req, resp) => {
+app.get('/wordPool',(req, resp) => {
     resp.send(JSON.stringify(wordPool.wordlist));
+});
+
+app.post('/reset',(req, resp) => {
+    const userId = req.body.userId;
+    targetWords[userId] = wordPool.selectWord();
+    resp.send("ok");
 });
 
 

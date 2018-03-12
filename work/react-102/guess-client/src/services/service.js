@@ -7,7 +7,9 @@ export const generateTargetWord = () => {
   export const askForResult = (userId, guessWord) => {
     return fetch('/guess', {
       method: 'POST',
-      body: JSON.stringify( { userId: userId, guessWord: guessWord } )
+      body: JSON.stringify( { 
+        userId: userId, 
+        guessWord: guessWord } )
     })
     .then( response => response.ok ? response.json() : Promise.reject(response.statusText) )
     .catch(  error  => Promise.reject(error))
