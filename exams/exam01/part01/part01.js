@@ -139,16 +139,14 @@
     fares hoped safer marsh ricky theta stake arbor
     `.split(/ |\n/g).map( word => word.toUpperCase() ).filter( word => word );
     
-
-
-
-    let results = [["History", "Common", "Round"]];
+  
+    let results = [];
     let targetWord = pickWord(wordlist);
     let round = 0;
     let state = 'guess';
 
     function render(){
-        document.querySelector('.output ul').innerHTML = generateList();
+        document.querySelector('.results').innerHTML = generateList();
     }
 
     function generateList(){
@@ -185,7 +183,7 @@
     }
 
     function addReset(){
-        results = [["History", "Common", "Round"]];
+        results = [];
         round = 0;
         targetWord = pickWord(wordlist);
         document.querySelector(".new-task").value = "";

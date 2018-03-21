@@ -153,10 +153,14 @@
     function init(){
         round = 1;
         buttonState = 'Begin';
-        document.querySelector(".playerbegin").innerHTML = "No guesses made";
-        document.querySelector(".combegin").innerHTML = "No guesses made";
-        document.querySelector(".status").innerHTML = "Enter a common 5 letter word for them to guess";
+
+        document.querySelector(".playerbegin").innerHTML = "No guesses You made";
+        document.querySelector(".combegin").innerHTML = "No guesses Computer made";
+        document.querySelector(".status").innerHTML = "Hint Message: Enter a common 5 letter word for them to guess";
         document.querySelector(".guess").innerHTML = "Enter";
+        let contentTitle = document.querySelectorAll(".content-title");
+        contentTitle[0].style.display = "none";
+        contentTitle[1].style.display = "none";
         document.querySelector(".guess").addEventListener("click",addBegin);
         document.querySelector(".new-task").addEventListener("input",addInput);
         document.querySelector(".new-task").addEventListener("keydown",addKeyDown);
@@ -182,17 +186,21 @@
         playerTargetWord = pickWord();
         turn = "player";
         buttonState = "Guess";
-        playerResults = [["History","Common","Round"]];
-        computerResults = [["History","Common","Round"]];
+        playerResults = [];
+        computerResults = [];
+
         computerGuess(computerTargetWord);
         console.log(computerGuesses);
         document.querySelector(".new-task").value = "";
         document.querySelector(".guess").disabled = true;
         document.querySelector(".guess").innerHTML = "Guess";
-        document.querySelector(".status").innerHTML = 'Enter a common 5 letter word to guess';
+        document.querySelector(".status").innerHTML = 'Hint Message: Enter a common 5 letter word to guess';
         document.querySelector(".new-task").style.color = "black"; 
-        document.querySelector(".playerbegin").innerHTML = "";
-        document.querySelector(".combegin").innerHTML = "";
+        document.querySelector(".playerbegin").style.display = "none";
+        document.querySelector(".combegin").style.display = "none";
+        let contentTitle = document.querySelectorAll(".content-title");
+        contentTitle[0].style.display = "block";
+        contentTitle[1].style.display = "block";
         document.querySelector(".guess").removeEventListener("click",addBegin);
         document.querySelector(".guess").addEventListener("click",addGuess);
         render();
@@ -245,7 +253,7 @@
         result.push(commonCount);
         result.push(round);
         playerResults.push(result);
-        render();fkeydown
+        render();
         if(commonCount === 5 && correct(playerGuess, playerTargetWord)){
             document.querySelector(".status").innerHTML = "Human wins in " + round.toString() + " turns";
             prepareEnd();
@@ -275,12 +283,12 @@
         let input = document.querySelector(".new-task").value.toUpperCase();
         if(buttonState === "Begin"){
             if(input.length !== 5){
-                document.querySelector(".status").innerHTML = 'Enter a common 5 letter word for them to guess';
+                document.querySelector(".status").innerHTML = 'Hint Message: Enter a common 5 letter word for them to guess';
                 document.querySelector(".guess").disabled = true;
                 document.querySelector(".new-task").style.color = "black"; 
             }else{
                 if(!inWordList(input)){
-                    document.querySelector(".status").innerHTML = 'Unknown word. Choose a different common 5 letter word for them to guess';
+                    document.querySelector(".status").innerHTML = 'Hint Message: Unknown word. Choose a different common 5 letter word for them to guess';
                     document.querySelector(".guess").disabled = true;
                     document.querySelector(".new-task").style.color = "red"; 
                 }else{
@@ -290,12 +298,12 @@
             }
         }else if(buttonState === "Guess"){
             if(input.length !== 5){
-                document.querySelector(".status").innerHTML = 'Enter a common 5 letter word to guess';
+                document.querySelector(".status").innerHTML = 'Hint Message: Enter a common 5 letter word to guess';
                 document.querySelector(".guess").disabled = true;
                 document.querySelector(".new-task").style.color = "black"; 
             }else{
                 if(!inWordList(input)){
-                    document.querySelector(".status").innerHTML = 'Unknown word. Choose a different common 5 letter word to guess';
+                    document.querySelector(".status").innerHTML = 'Hint Message: Unknown word. Choose a different common 5 letter word to guess';
                     document.querySelector(".guess").disabled = true;
                     document.querySelector(".new-task").style.color = "red"; 
                 }else{
