@@ -153,6 +153,7 @@
     function init(){
         round = 1;
         buttonState = 'Begin';
+
         document.querySelector(".playerbegin").innerHTML = "No guesses You made";
         document.querySelector(".combegin").innerHTML = "No guesses Computer made";
         document.querySelector(".status").innerHTML = "Hint Message: Enter a common 5 letter word for them to guess";
@@ -187,6 +188,7 @@
         buttonState = "Guess";
         playerResults = [];
         computerResults = [];
+
         computerGuess(computerTargetWord);
         console.log(computerGuesses);
         document.querySelector(".new-task").value = "";

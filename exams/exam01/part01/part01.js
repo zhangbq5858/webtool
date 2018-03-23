@@ -139,9 +139,7 @@
     fares hoped safer marsh ricky theta stake arbor
     `.split(/ |\n/g).map( word => word.toUpperCase() ).filter( word => word );
     
-
-
-
+  
     let results = [];
     let targetWord = pickWord(wordlist);
     let round = 0;

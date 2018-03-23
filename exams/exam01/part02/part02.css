@@ -9,7 +9,6 @@
     overflow-y: auto;
     height: 400px;
     border: 1px;
-    border: 1px  solid coral;
     background-color: wheat;
     vertical-align:text-top;
 }
@@ -19,6 +18,7 @@
     display: block;
     margin: 5px;
 }
+
 
 .players-results, .computer-results{
     list-style:none;
@@ -83,6 +83,7 @@
 .input span{
     margin-left: 5px;
 }
+
 
 body{
     background-color: black;

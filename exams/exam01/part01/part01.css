@@ -20,6 +20,7 @@
 
 .history-title, .common-title, .round-title{
     font-weight: bold;
+
     font-size: 120%;
     display: inline-block;
     margin: 5px;
@@ -42,6 +43,7 @@
 .round{
     width: 60px;
 }
+
 
 .word, .common-number, .round{
     display: inline-block;
