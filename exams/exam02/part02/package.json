@@ -1,0 +1,17 @@
+{
+  "name": "alfred",
+  "version": "1.0.0",
+  "description": "alfred",
+  "main": "alfred.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "alfred": "node alfred.js",
+    "barbara": "node barbara.js"
+  },
+  "author": "bokin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3"
+  }
+}
