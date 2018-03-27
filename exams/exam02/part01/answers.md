@@ -14,16 +14,15 @@ console.log(data.cats);
 ### Answer:
 
  ```
- const data = fetch('example.com/test')
+ const data = await fetch('example.com/test')
  .then( response => { return response.ok ? response.json() : Promise.reject(response.statusText) );
- .then( json => {
- return data;
- });
  
  console.log(data.cats);
  ```
  
- #### The original code doesnot work as intended because the fetch() API only rejects a promise when a "network error is encountered" such as the user is offline. When some errors happens in server end, the promise is still resolved. Hence we need to check the HTTP response's status before analysis the response data.
+ #### (+*) The original code doesnot work as intended because the fetch() API only rejects a promise when a "network error is encountered" such as the user is offline. When some errors happens in server end, the promise is still resolved. Hence we need to check the HTTP response's status before analysis the response data.
+ 
+ #### (+*) Fetch funtion is a async funtion, hence in the origin code, the line  "console.log(data.cats);" will be executed first. Hence use key word await to block the data line until data get value from server.
 
 ## Question: What is the scope of a variable in JS?  How does it relate to closures? 
 
