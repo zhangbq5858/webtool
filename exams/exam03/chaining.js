@@ -21,4 +21,3 @@ console.log(chain.one().one().result()); // 2
 console.log(chain.one().two().result()); // 3
 console.log(chain.one().one().one().two().one().result()); // 6
 
-
