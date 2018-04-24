@@ -42,8 +42,8 @@ There is no JavaScript engine yet that natively supports ES6 modules. NodeJS use
 
 ### Answer:
  
-
-Most browsers do not  use common Js as rendering engine. And they just loaded js files directly by tags. 
+1.Most browsers do not support commonJs as rendering engine, because they lack four global parameters: module, exports, require, global. Hence browsers can not use "require".
+2.Browsers just load js files directly by tags. And they could load ES6 modules by tag <script> with property type="module". Browsers do not use "import".
 
 ## Question:  What is a 'side-effect'?  Why do we want to minimize them?
 
